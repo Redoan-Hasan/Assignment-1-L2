@@ -1,23 +1,93 @@
-// Problem 1:
-// Description: Create a function that takes a string and an optional boolean.
 
-// If the boolean is true or not provided, return the string in uppercase.
-// If the boolean is false, return the string in lowercase.
-// Function Signature:
+function formatString(inputOne: string, inputTwo?: boolean): string {
+  if (inputTwo !== false) {
+    return inputOne.toUpperCase();
+  } else {
+    return inputOne.toLowerCase();
+  }
+}
 
-// function formatString(input: string, toUpper?: boolean): string
-// Example:
 
-// formatString("Hello");          // Output: "HELLO"
-// formatString("Hello", true);   // Output: "HELLO"
-// formatString("Hello", false);  // Output: "hello"
+function filterByRating(
+  items: { title: string; rating: number }[]
+): { title: string; rating: number }[] {
+  return items.filter((item) => item.rating >= 4);
+}
 
-function formatString(inputOne:string, inputTwo?:boolean):string{
-    if(inputTwo !== false){
-        return inputOne.toUpperCase();
+function concatenateArrays<T>(...arrays: T[][]): T[] {
+  return arrays.flat();
+}
+
+
+class Vehicle {
+  constructor(private make: string, public year: number) {}
+
+  getInfo(): string {
+    return `Make: ${this.make}, Year: ${this.year}`;
+  }
+}
+
+class Car extends Vehicle {
+  constructor(make: string, year: number, private model: string) {
+    super(make, year);
+  }
+
+  getModel(): string {
+    return `Model: ${this.model}`;
+  }
+}
+
+
+function processValue(value: string | number): number{
+    if(typeof value === "string"){
+        return value.length;
     }
     else{
-        return inputOne.toLowerCase();
+        return value * 2;
     }
 }
-console.log( formatString("Hello", false));
+
+interface Product {
+    name: string;
+    price: number; 
+  }
+  function getMostExpensiveProduct(products: Product[]): Product | null{
+    if (products.length === 0) {
+      return null;
+    }
+    return products.reduce((max, product) => (product.price > max.price ? product : max));
+  }
+
+
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday
+}
+
+function getDayType(day: Day): string{
+    if(day === Day.Saturday || day === Day.Sunday){
+        return "Weekend";
+    }
+    else{
+        return "Weekday";
+    }
+}
+
+
+async function squareAsync(n: number): Promise<number>{
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if(n < 0){
+        reject(new Error("Negative number not allowed"));
+      }
+      else{
+        resolve(n * n);
+      }
+    }, 1000);
+  })
+}
