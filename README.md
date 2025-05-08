@@ -78,39 +78,42 @@ Happy coding! 🐾
 
 
 
-Interfaces vs Types in TypeScript: Just a Chill Guide
-Yo, what’s good? If you’re new to TypeScript, you might be like, “What’s the deal with interfaces and types?” They both help you tell your code how your data should look, but they’re not twins. I was so lost when I started, so let’s keep it real simple, like I’m chatting with you over coffee. We’ll use a fun example with union and intersection types to make it click.
-What’s the Vibe?
-Interfaces and types are like sticky notes for your code, saying, “Yo, this data needs a name and age.” They keep your stuff organized.
-How Are They Not the Same?
+
+
+---
+
+# **Interfaces vs Types in TypeScript: Just a Chill Guide**
+
+Yo, what’s good? If you’re new to TypeScript, you might be like, “What’s the deal with **interfaces** and **types**?” They both help you tell your code how your data should look, but they’re not twins. I was so lost when I started, so let’s keep it real simple, like I’m chatting with you over coffee. We’ll use a fun example with **union** and **intersection** types to make it click.
+
+## **What’s the Vibe?**
+
+**Interfaces** and **types** are like sticky notes for your code, saying, “Yo, this data needs a name and age.” They keep your stuff organized.
+
+## **How Are They Not the Same?**
+
 Here’s the scoop:
 
-Adding More:
+### **1. Adding More**
+- **Interfaces** use `extends` to slap on extra stuff. It’s clean and easy.
+- **Types** use `&` to mash things together, but it’s a bit messy.
 
-Interfaces use extends to slap on extra stuff. It’s clean and easy.
-Types use & to mash things together, but it’s a bit messy.
+### **2. Piling On Later**
+- **Interfaces** let you add more later, and TypeScript just glues it all together.
+- **Types** are like, “Nah, you can’t redefine me!” and throw an error.
 
+### **3. Being Extra**
+- **Types** can do cool tricks like unions (`string | number`) or intersections.
+- **Interfaces** are all about objects and don’t play with unions.
 
-Piling On Later:
+### **4. Classy Stuff**
+- Both work with classes, but **interfaces** feel more legit for them.
 
-Interfaces let you add more later, and TypeScript just glues it all together.
-Types are like, “Nah, you can’t redefine me!” and throw an error.
+## **A Fun Little Example**
 
+Imagine you’re making an app for a library to track books. You need a regular book, a super rare book, and IDs that could be strings or numbers. Here’s how it goes with **union** and **intersection** types:
 
-Being Extra:
-
-Types can do cool tricks like unions (string | number) or intersections.
-Interfaces are all about objects and don’t play with unions.
-
-
-Classy Stuff:
-
-Both work with classes, but interfaces feel more legit for them.
-
-
-
-A Fun Little Example
-Imagine you’re making an app for a library to track books. You need a regular book, a super rare book, and IDs that could be strings or numbers. Here’s how it goes with union and intersection types:
+```typescript
 // Interface for a book
 interface Book {
   title: string;
@@ -147,19 +150,21 @@ const bookWithAuthor: BookWithAuthor = {
   pages: 350,
   author: "Alex",
 };
+```
 
 Here’s the deal:
+- **Interfaces** for `Book` and `RareBook` ‘cause they’re objects, and we’re building on them with `extends`.
+- **Type** for `BookID` ‘cause it’s a **union** (string or number).
+- **Type** for `BookWithAuthor` ‘cause it’s an **intersection**, mixing `Book` with an author.
 
-Interfaces for Book and RareBook ‘cause they’re objects, and we’re building on them with extends.
-Type for BookID ‘cause it’s a union (string or number).
-Type for BookWithAuthor ‘cause it’s an intersection, mixing Book with an author.
+## **Which One to Pick?**
 
-Which One to Pick?
+- **Interfaces**: Go for these when you’re dealing with objects, especially if you might add more later.
+- **Types**: Use these for unions, intersections, or anything that’s not just an object.
 
-Interfaces: Go for these when you’re dealing with objects, especially if you might add more later.
-Types: Use these for unions, intersections, or anything that’s not just an object.
+## **Wrapping It Up**
 
-Wrapping It Up
-That’s the lowdown on interfaces and types! Interfaces are awesome for objects, and types are perfect for the wild stuff like unions or intersections. I used to stress about picking one, but just use interfaces for objects and types for the crazy stuff. You’ll nail it in no time!
+That’s the lowdown on interfaces and types! **Interfaces** are awesome for objects, and **types** are perfect for the wild stuff like unions or intersections. I used to stress about picking one, but just use interfaces for objects and types for the crazy stuff. You’ll nail it in no time!
+
 Keep coding, you’re killing it! 📚
 
